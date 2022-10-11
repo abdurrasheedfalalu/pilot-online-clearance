@@ -3,21 +3,8 @@
 <div class="row justify-content-center">
     <h4 class="col-md-5" style="font-size: 50px; font-family:'Courier New', Courier, monospace;">Admin Site</h4>
 </div>
-    <ul >
-        <li style="display: inline;">
-            <form action="{{ url_for('staff.index') }}" method="post">
-                {{ form.hidden_tag() }}
-                {{ form.Staffs (class="btn btn-outline-info") }}
-            </form>
-        </li>
-        <li style="display: inline;">
-            <form action="" method="post">
-                {{ form.hidden_tag() }}
-                {{ form.Students (class="btn btn-outline-warning") }}
-            </form>
-        </li>
-    </ul>
-    <ul>
+    <a href="{{ url_for('staff.index') }}" class="btn btn-outline-secondary">Add Staff</a>
+    <a href="{{ url_for('student.students') }}" class="btn btn-outline-secondary">Add Student</a>
         {% for admin in admin %}
         <li>{{ admin.username }}</li>
         {% endfor %}

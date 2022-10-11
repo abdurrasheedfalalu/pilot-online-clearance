@@ -1,8 +1,5 @@
 {% extends 'layout.html' %}
 {% block content %}
     <h4>Staffs Site</h4>
-    <form action="{{ url_for('staff.staff_reg') }}" method="post">
-        {{ form.hidden_tag() }}
-        {{ form.add_staff (class="btn btn-outline-success") }}
-    </form>
+    <a href="{{ url_for('staff.staff_reg') }}" class="btn btn-outline-warning">Add New Staff</a>
 {% endblock %}

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
 
 
-from app.forms import AdminLoginForm, StaffEmptyForm, AdminRegistrationForm
+from app.forms import AdminLoginForm, AdminRegistrationForm
 from app.models import db, Admin
 
 
@@ -21,9 +21,8 @@ def login():
 
 @bp.route('/adminpage')
 def adminpage():
-    form = StaffEmptyForm()
     admin = Admin.query.all()
-    return render_template('admin/admin.html', form=form, admin=admin)
+    return render_template('admin/admin.html', admin=admin)
 
 
 

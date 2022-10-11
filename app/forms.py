@@ -27,13 +27,6 @@ class AdminRegistrationForm(FlaskForm):
             raise ValidationError('Admin already exists.')
 
 
-class StaffEmptyForm(FlaskForm):
-    Staffs = SubmitField()
-    Students = SubmitField()
-    add_staff = SubmitField()
-
-
-
 
 class StaffRgistrationForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
@@ -64,15 +57,15 @@ class StudentsRegisterationForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     surname = StringField('SurName', validators=[DataRequired()])
     other_name = StringField('Other Name')
-    reg_no = StringField('Reg_no', validators=[DataRequired(), Length(max=10)])
-    course_title = StringField('Course Title', validators=[DataRequired(), Length(max=10)])
+    reg_no = StringField('Registration Number', validators=[DataRequired(), Length(max=20)])
+    course_title = StringField('Course Title', validators=[DataRequired(), Length(max=20)])
     state = StringField('State', validators=[DataRequired(), Length(min=3, max=10)])
     lga = StringField('L.G.A', validators=[DataRequired(), Length(min=3, max=10)])
     gender = SelectField('Gender', choices=[('male','Male'), ('female', 'Female')])
     level = IntegerField('Level', validators=[DataRequired()])
     dob = DateField('Date of Birth', validators=[DataRequired()])
     department = StringField('Department', validators=[DataRequired()])
-    school = StringField('School', validators=[DataRequired()])
-    reason_for_leaving = StringField('Reason For Leaving', validators=[DataRequired(), Length(max=20)])
+    school = StringField('School', validators=[DataRequired(), Length(max=30)])
+    reason_for_leaving = StringField('Reason For Leaving', validators=[DataRequired(), Length(max=30)])
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField('Submit')

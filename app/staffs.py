@@ -1,17 +1,21 @@
-from flask import Blueprint, render_template
-from app.forms import StaffRgistrationForm, StaffEmptyForm
+from flask import Blueprint, flash, redirect, render_template, url_for
+
+from app.models import Staffs, db
+from app.forms import StaffRgistrationForm
 
 staff = Blueprint('staff', __name__, url_prefix="/staffs")
 
 
-@staff.route('/home', methods=['GET', 'POST'])
+@staff.route('/home')
 def index():
-    form = StaffEmptyForm()
-    return render_template('staffs/staff.html', form=form)
+    return render_template('staffs/staff.html')
 
 
 
-@staff.route('/staff_reg', methods=['GET', 'POST'])
+@staff.route('/staff_registration', methods=['GET', 'POST'])
 def staff_reg():
     form = StaffRgistrationForm()
+    if form.validate_on_submit():
+        flash('Your staff has been added successfully', 'success')
+        return redirect(url_for('index'))
     return render_template('staffs/staff_reg.html', form=form)

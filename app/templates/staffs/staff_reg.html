@@ -71,8 +71,17 @@
                     {% endif %}
                 </div>
                 <div class="col-md-4 form-group">
-                    {{ form.lga.label }}
-                    {{ form.lga(class="form-control form-control-md", value=staff.lga if staff else "") }}
+                    {{ form.lga.label(class="form-control-label") }}
+                    {% if form.lga.errors %}
+                        {{ form.lga(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lga.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lga(class="form-control") }}
+                    {% endif %}
                 </div>
             </div>
             <div class="row justify-content-left">
