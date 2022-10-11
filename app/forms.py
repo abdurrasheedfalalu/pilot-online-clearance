@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import (
-    StringField, PasswordField, SubmitField, DateField, SelectField, RadioField
+    StringField, PasswordField, SubmitField, DateField, SelectField, RadioField, IntegerField
 )
-from wtforms.validators import DataRequired, EqualTo, ValidationError
+from wtforms.validators import DataRequired, EqualTo, ValidationError, Length
 
 from app.models import Admin
 
@@ -40,14 +40,14 @@ class StaffRgistrationForm(FlaskForm):
     surname = StringField('SurName', validators=[DataRequired()])
     other_name = StringField('Other Name')
     dob = DateField('Date of Birth', validators=[DataRequired()])
-    state = StringField('State', validators=[DataRequired()])
-    lga = StringField('L.G.A', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired(), Length(min=3, max=10)])
+    lga = StringField('L.G.A', validators=[DataRequired(), Length(min=3, max=10)])
     staff_no = StringField('Staff Number', validators=[DataRequired()])
     department = StringField('Department', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     gender = SelectField('Gender', choices=[('male','Male'), ('female', 'Female')])
     role = SelectField('Role', choices=[
-        ('HOD', 'H.O.D'), ('form master', 'Form Master'), ('game master', 'Game Master'),
+        ('HOD', 'H.O.D'), ('game master', 'Game Master'),
         ('gurdian', 'Gurdian'), ('discpline master', 'Discpline Master')
 
     ])
@@ -58,3 +58,19 @@ class StaffOrStudentForm(FlaskForm):
     password = PasswordField("Password", validators=[DataRequired()])
     role = RadioField('Role', choices=[('student', 'Student'), ('staff', 'Staff')], default='student')
     submit = SubmitField('Submit')
+
+
+class StudentsRegisterationForm(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()])
+    surname = StringField('SurName', validators=[DataRequired()])
+    other_name = StringField('Other Name')
+    reg_no = StringField('Reg_no', validators=[DataRequired(), Length(max=10)])
+    course_title = StringField('Course Title', validators=[DataRequired(), Length(max=10)])
+    state = StringField('State', validators=[DataRequired(), Length(min=3, max=10)])
+    lga = StringField('L.G.A', validators=[DataRequired(), Length(min=3, max=10)])
+    gender = SelectField('Gender', choices=[('male','Male'), ('female', 'Female')])
+    level = IntegerField('Level', validators=[DataRequired()])
+    dob = DateField('Date of Birth', validators=[DataRequired()])
+    department = StringField('Department', validators=[DataRequired()])
+    school = StringField('School', validators=[DataRequired()])
+    reason_for_leaving = StringField('Reason For Leaving', validators=[DataRequired(), Length(max=20)])

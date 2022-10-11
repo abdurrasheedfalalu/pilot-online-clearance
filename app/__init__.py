@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
 from app.staffs import staff
+from app.students import student
 from app.admin import bp
 from app.models import db
 from config import Config
@@ -23,6 +24,7 @@ def create_app(test_config=None):
 
     app.register_blueprint(bp)
     app.register_blueprint(staff)
+    app.register_blueprint(student)
 
 
 
