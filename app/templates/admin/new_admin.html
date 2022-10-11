@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <h4 class="col-md-5" style="font-size: 50px; font-family:'Courier New', Courier, monospace;">New Admin</h4>
+</div>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                {{ form.username.label(class="form-control-label") }}
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control") }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    {{ form.password2.label(class="form-control-label") }}
+                    {% if form.password2.errors %}
+                        {{ form.password2(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password2.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password2(class="form-control") }}
+                    {% endif %}
+                </div>
+        
+        </div>
+        <div class="row justify-content-left mt-3">
+            <div class="col-md-4 form-group"></div>
+            <div class="col-md-4 form-group">
+                {{ form.submit (class="btn btn-info") }}
+            </div>
+            <div class="col-md-4 form-group"></div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    {% if title %} <title>Online Clearance - {{ title }}</title>
+    {% else %}
+        <title>Online Clearance</title>
+    {% endif %}
+</head>
+<nav class="navbar navbar-expand-md navbar-light bg-steel ">
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="navbar-brand">
+            <img src="{{ url_for('static', filename='google.png') }}" alt="image">
+            Online Clearance
+        </a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <div class="navbar-nav me-auto">
+                <a href="#" class="nav-item nav-link">Home</a>
+                <a href="#" class="nav-item nav-link">Explore</a>
+            </div>
+            <div class="navbar-nav">
+                <a href="{{ url_for('admin.new_admin') }}" class="nav-item nav-link">Login</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<body>
+    <div class="row">
+        <div class="">
+            <div class="container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissable"alert-dissmiss >
+                                <span>{{ message }}</span>
+                                <button class="btn-close float-end" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>
