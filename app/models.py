@@ -14,7 +14,7 @@ class Staffs(db.Model):
     staff_no = db.Column(db.String(20), nullable=False, unique=True)
     gender = db.Column(db.String(20), nullable=False)
     role = db.Column(db.String(20), nullable=False)
-    department = db.Column(db.String(20), nullable=False)
+    department = db.Column(db.String(20), nullable=True)
     password = db.Column(db.String, nullable=False)
 
     def generate_password(self, password):
