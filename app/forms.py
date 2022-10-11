@@ -75,3 +75,4 @@ class StudentsRegisterationForm(FlaskForm):
     school = StringField('School', validators=[DataRequired()])
     reason_for_leaving = StringField('Reason For Leaving', validators=[DataRequired(), Length(max=20)])
     password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField('Submit')
