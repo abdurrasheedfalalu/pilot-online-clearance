@@ -22,7 +22,8 @@ def login():
 @bp.route('/adminpage')
 def adminpage():
     form = StaffEmptyForm()
-    return render_template('admin/admin.html', form=form)
+    admin = Admin.query.all()
+    return render_template('admin/admin.html', form=form, admin=admin)
 
 
 
