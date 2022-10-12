@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h4>Students Site</h4>
+   <a href="{{ url_for('admin.std_register') }}" class="btn btn-outline-success">Add New Student</a>
+   <div>
+    <ul>
+        {% for std in student %}
+            <li>
+                <a href="{{ url_for('admin.student_info', id=std.id) }}" style="text-decoration: none; display: inline;">
+                    {{ std.first_name }} {{ std.surname }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

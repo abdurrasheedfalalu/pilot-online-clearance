@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h4>Staffs Site</h4>
+    <a href="{{ url_for('admin.staff_reg') }}" class="btn btn-outline-warning">Add New Staff</a>
+    <div>
+        <ul>
+            {% for staff in staff %}
+                <li>
+                    <a href="{{ url_for('admin.staff_info', id=staff.id) }}" style="text-decoration: none; display: inline;">
+                        {{ staff.first_name }} {{ staff.surname }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

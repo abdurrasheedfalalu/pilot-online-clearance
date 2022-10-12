@@ -3,10 +3,13 @@
 <div class="row justify-content-center">
     <h4 class="col-md-5" style="font-size: 50px; font-family:'Courier New', Courier, monospace;">Admin Site</h4>
 </div>
-    <a href="{{ url_for('staff.index') }}" class="btn btn-outline-secondary">Add Staff</a>
-    <a href="{{ url_for('student.students') }}" class="btn btn-outline-secondary">Add Student</a>
+    <a href="{{ url_for('admin.staffs') }}" class="btn btn-outline-secondary">Staff-Section</a>
+    <a href="{{ url_for('admin.students') }}" class="btn btn-outline-secondary">Student-Section</a>
+    <ul>
         {% for admin in admin %}
-        <li>{{ admin.username }}</li>
+        <li>
+            <a href="{{ url_for('admin.admin_info', id=admin.id) }}" style="text-decoration: none;">{{ admin.username }}</a>
+        </li>
         {% endfor %}
     </ul>
 {% endblock %}

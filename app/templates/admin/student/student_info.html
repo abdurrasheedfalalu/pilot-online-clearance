@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row justify-content-center border-bottom">
+    <h4 class="col-md-5" style="font-size: 30px; font-family:'Courier New', Courier, monospace;">
+        Student Info
+    </h4>
+</div>
+    <div class="mt-3">
+        <table class="table table-bordered">
+            <thead>
+                <th>First Name</th>
+                <th>SurName</th>
+                <th>Date Of Birth</th>
+                <th>Reg No</th>
+                <th>Gender</th>
+                <th>Course Title</th>
+                <th>State</th>
+                <th>LGA</th>
+                <th>Department</th>
+                <th>Level</th>
+                <th>School</th>
+                <th>Reason For Leaving</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ student.first_name }}</td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.dob }}</td>
+                    <td>{{ student.reg_no }}</td>
+                    <td>{{ student.gender }}</td>
+                    <td>{{ student.course_title }}</td>
+                    <td>{{ student.state }}</td>
+                    <td>{{ student.lga }}</td>
+                    <td>{{ student.department }}</td>
+                    <td>{{ student.level }}</td>
+                    <td>{{ student.school }}</td>
+                    <td>{{ student.reason_for_leaving }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row justify-content-left mt-3">
+        <div class="col-md-4 form-group"></div>
+        <div class="col-md-4 form-group">
+            <a href="{{ url_for('admin.update_student_info', id=student.id) }}" class="btn btn-outline-success">Update Info</a>
+            <a href="{{ url_for('admin.delete_student', id=student.id) }}"class="btn btn-outline-danger">Delete</a>
+        </div>
+        <div class="col-md-4 form-group"></div>
+    </div>
+</div>
+{% endblock %}

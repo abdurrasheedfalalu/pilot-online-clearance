@@ -69,3 +69,46 @@ class StudentsRegisterationForm(FlaskForm):
     reason_for_leaving = StringField('Reason For Leaving', validators=[DataRequired(), Length(max=30)])
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+
+
+
+
+
+class UpdateStaffForm(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()])
+    surname = StringField('SurName', validators=[DataRequired()])
+    other_name = StringField('Other Name')
+    dob = DateField('Date of Birth', validators=[DataRequired()])
+    state = StringField('State', validators=[DataRequired(), Length(min=3, max=10)])
+    lga = StringField('L.G.A', validators=[DataRequired(), Length(min=3, max=10)])
+    staff_no = StringField('Staff Number', validators=[DataRequired()])
+    department = StringField('Department', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    gender = SelectField('Gender', choices=[('male','Male'), ('female', 'Female')])
+    role = SelectField('Role', choices=[
+        ('HOD', 'H.O.D'), ('game master', 'Game Master'),
+        ('gurdian', 'Gurdian'), ('discpline master', 'Discpline Master')
+
+    ])
+    submit = SubmitField('Update')
+
+
+
+
+class UpdateStudentsForm(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()])
+    surname = StringField('SurName', validators=[DataRequired()])
+    other_name = StringField('Other Name')
+    reg_no = StringField('Registration Number', validators=[DataRequired(), Length(max=20)])
+    course_title = StringField('Course Title', validators=[DataRequired(), Length(max=20)])
+    state = StringField('State', validators=[DataRequired(), Length(min=3, max=10)])
+    lga = StringField('L.G.A', validators=[DataRequired(), Length(min=3, max=10)])
+    gender = SelectField('Gender', choices=[('male','Male'), ('female', 'Female')])
+    level = IntegerField('Level', validators=[DataRequired()])
+    dob = DateField('Date of Birth', validators=[DataRequired()])
+    department = StringField('Department', validators=[DataRequired()])
+    school = StringField('School', validators=[DataRequired(), Length(max=30)])
+    reason_for_leaving = StringField('Reason For Leaving', validators=[DataRequired(), Length(max=30)])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField('Update')

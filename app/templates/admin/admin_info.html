@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row justify-content-center border-bottom">
+    <h4 class="col-md-5" style="font-size: 30px; font-family:'Courier New', Courier, monospace;">
+        Staff Info
+    </h4>
+</div>
+    <div class="mt-3">
+        <p>{{ admin.username }}</p>
+    </div>
+
+    <div class="row justify-content-left mt-3">
+        <div class="col-md-4 form-group"></div>
+        <div class="col-md-4 form-group">
+            <a href="{{ url_for('admin.admin_info', id=admin.id) }}" class="btn btn-outline-success">Update Info</a>
+            <a href="{{ url_for('admin.delete_admin', id=admin.id) }}"class="btn btn-outline-danger">Delete</a>
+        </div>
+        <div class="col-md-4 form-group"></div>
+    </div>
+</div>
+
+{% endblock %}

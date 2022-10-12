@@ -1,7 +1,13 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="container">
+<div class="row justify-content-center border-bottom">
+    <h4 class="col-md-5" style="font-size: 30px; font-family:'Courier New', Courier, monospace;">
+        Update Student Info
+    </h4>
+</div>
+    <div class="container mt-3">
         <form method="POST" action="">
+            {{ form.hidden_tag() }}
             <div class="row justify-content-left">
                 <div class="col-md-4 form-group">
                     {{ form.first_name.label(class="form-control-label") }}
